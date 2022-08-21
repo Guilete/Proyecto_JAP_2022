@@ -6,6 +6,7 @@ function login() {
     if(email===""||pass===""){
         alert ("Asegúrese de haber llenado los campos requeridos");
     }else{
+        localStorage.setItem("email",email);
         location.href="index.html";
     }
 }

@@ -1,3 +1,4 @@
+let productArray = []
 function showCategoriesList(array){
     let htmlContentToAppend = "";
 
@@ -30,8 +31,8 @@ function showCategoriesList(array){
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(AUTOS_URL).then(function(resultObj){
         if (resultObj.status === "ok") {
-            categoriesArray = resultObj.data;
-            showCategoriesList(categoriesArray);
+            productArray = resultObj.data;
+            showCategoriesList(productArray);
         }
     });
 });
