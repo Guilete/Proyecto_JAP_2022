@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", ()=> {
-    let usuario =localStorage.getItem("email");
-    if (usuario == null) {
+    let usuario = localStorage.getItem("email");
+    if (usuario == undefined) {
         alert("Ingresá tus datos pillín");
         location.href = "login.html";
     } else {
-        document.getElementById("email").innerHTML = usuario;
+        document.getElementById("email").innerHTML=usuario;
     }
 
 })

@@ -1,9 +1,9 @@
 function login() {
     let email = document.getElementById("email").value;
     let pass = document.getElementById("pass").value;
-
-
-    if(email===""||pass===""){
+    let nombre = document.getElementById("nombre").value;
+    
+    if(email===""||pass===""||nombre===""){
         alert ("Asegúrese de haber llenado los campos requeridos");
     }else{
         localStorage.setItem("email",email);

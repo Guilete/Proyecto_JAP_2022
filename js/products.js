@@ -27,9 +27,9 @@ function showCategoriesList(array){
     }
 }
 
-
 document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(AUTOS_URL).then(function(resultObj){
+    let seccion = localStorage.getItem("catID");
+    getJSONData(PRODUCTS_URL + seccion + EXT_TYPE).then(function(resultObj){
         if (resultObj.status === "ok") {
             productArray = resultObj.data;
             showCategoriesList(productArray);
