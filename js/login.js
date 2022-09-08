@@ -9,10 +9,9 @@ function login() {
         localStorage.setItem("email",email);
         location.href="index.html";
     }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
+  }
+  document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("ingreso").addEventListener("click", () => {
         login();
-    })
-})
+    });
+  });
