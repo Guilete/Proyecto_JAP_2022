@@ -55,8 +55,11 @@ function filtrar(array){
 
     Mostrar_Lista_De_Productos(filtrado)
 }
-
-
+let codigo = localStorage.getItem("prodID");
+function setProdID(id) {
+    localStorage.setItem("prodID", id);
+    window.location = "product-info.html"
+}
 
 let productsArray = []
 
@@ -66,7 +69,7 @@ function Mostrar_Lista_De_Productos(array){
     for(let i = 0; i < array.length; i++){ 
         let product = array[i];
         htmlContentToAppend += `
-            <div class="list-group-item list-group-item-action">
+            <div onclick="setProdID(${product.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="` + product.image + `" alt="product image" class="img-thumbnail">
@@ -116,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     }); 
     document.getElementById("Asc").addEventListener("click", ()=>{
         Ordenar_Y_Mostrar_Productos(Orden_Ascendente,productsArray);
-    })
+    });
     document.getElementById("Desc").addEventListener("click", ()=>{
         Ordenar_Y_Mostrar_Productos(Orden_Descendente,productsArray);
     });

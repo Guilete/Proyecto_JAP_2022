@@ -7,6 +7,7 @@ function login() {
         alert ("Asegúrese de haber llenado los campos requeridos");
     }else{
         localStorage.setItem("email",email);
+        localStorage.setItem("nombre",nombre);
         location.href="index.html";
     }
   }
