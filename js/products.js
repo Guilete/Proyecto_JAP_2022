@@ -56,6 +56,7 @@ function filtrar(array){
     Mostrar_Lista_De_Productos(filtrado)
 }
 let codigo = localStorage.getItem("prodID");
+
 function setProdID(id) {
     localStorage.setItem("prodID", id);
     window.location = "product-info.html"

@@ -42,3 +42,43 @@ let getJSONData = function(url){
 }
 
 
+
+
+
+
+
+
+
+
+function login() {
+  let email = document.getElementById("email").value;
+  let pass = document.getElementById("pass").value;
+  let nombre = document.getElementById("nombre").value;
+  
+  if(email===""||pass===""||nombre===""){
+      alert ("Asegúrese de haber llenado los campos requeridos");
+  }else{
+      localStorage.setItem("email",email);
+      localStorage.setItem("nombre",nombre);
+      location.href="index.html";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", ()=> {
+  let usuario = localStorage.getItem("email");
+  let nombre = localStorage.getItem("nombre");
+  if (usuario == undefined || nombre == undefined) {
+      alert("Ingresá tus datos pillín");
+      location.href = "login.html";
+  } else {
+      document.getElementById("nombre").innerHTML=nombre;
+  }
+
+  document.getElementById("cerrar").addEventListener("click", () => {
+    alert("Cerrando...");
+    localStorage.clear();
+    location.href = "login.html";
+  })
+
+})
+

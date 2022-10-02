@@ -1,3 +1,19 @@
+.zoom {
+  transition: transform .2s; 
+}
+
+.zoom:hover {
+  transform: scale(2.0); 
+}
+
+img.zoom{
+  height: 200px;
+  width: 340px; 
+  border: lightgray 1px solid;
+}
+
+
+
 .jumbotron,
 .card-body,
 .container,

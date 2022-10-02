@@ -3,6 +3,7 @@ let products_info_Array = [];
 
 let comentario_Array = [];
 
+let relacionados_Array = [];
 
 
 function Mostrar_Info_De_Productos(array){
@@ -11,7 +12,7 @@ function Mostrar_Info_De_Productos(array){
     let descripcion = array.description;
     let categoria = array.category;
     let cantidad_vendida = array.soldCount;
-    document.getElementById("nombre").innerHTML = nombre;
+    document.getElementById("nombre_producto").innerHTML = nombre;
     document.getElementById("precio").innerHTML = precio;
     document.getElementById("descripcion").innerHTML = descripcion;
     document.getElementById("categoria").innerHTML = categoria;
@@ -53,7 +54,25 @@ function Mostrar_Comentario(array){
     document.getElementById("comentarios").innerHTML = htmlContentToAppend;
 }
 
+function setProdID(id) {
+    localStorage.setItem("prodID", id);
+    window.location = "product-info.html"
+}
 
+
+function Mostrar_relacionados(array){
+    let htmlContentToAppend = "";
+   
+    for(let i = 0; i < array.length; i++){ 
+        let relacionado = array[i];
+        htmlContentToAppend += 
+        `
+           <img onclick="setProdID(${relacionado.id})" src="` + relacionado.image + `" class="img-thumbnail cursor-active" height=300px; width=300px>
+           <p> ` + relacionado.name + ` </p>`;
+        
+    }
+    document.getElementById("relacionados").innerHTML = htmlContentToAppend;
+}
 
 
 
@@ -70,8 +89,15 @@ document.addEventListener("DOMContentLoaded", function(){
     getJSONData(PRODUCT_INFO_COMMENTS_URL + codigo + EXT_TYPE).then(function(resultObj){
         if (resultObj.status === "ok") {
             comentario_Array = resultObj.data;
-            console.log(comentario_Array)
             Mostrar_Comentario(comentario_Array)
+        }
+    
+    });
+
+    getJSONData(PRODUCT_INFO_URL + codigo + EXT_TYPE).then(function(resultObj){
+        if (resultObj.status === "ok") {
+            relacionados_Array = resultObj.data.relatedProducts;
+            Mostrar_relacionados(relacionados_Array)
         }
     
     });

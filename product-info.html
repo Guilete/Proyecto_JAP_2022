@@ -41,8 +41,16 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-          </li>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="nombre"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Mi Carrito</a></li>
+              <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+              <li><a class="dropdown-item" id="cerrar" href="#">Me voy</a></li>
+            </ul>
+          </div>
         </ul>
       </div>
     </div>
@@ -50,7 +58,7 @@
   <main>
     <div>
       <br><br>
-      <h2 id="nombre"></h2><br>
+      <h2 id="nombre_producto"></h2><br>
       <hr>
       <h4><strong>Precio</strong></h4>
       <strong><p id="precio"></p></strong><br>
@@ -61,10 +69,12 @@
       <h4><strong>Cantidad Vendida</strong></h4>
       <p id="vendidos"></p><br>
       <h4><strong>Imágenes Ilustrativas</strong></h4><br>
-      <img style="height: 20%; width: 20%;" id="img1" [src]="">
-      <img style="height: 20%; width: 20%;" id="img2" [src]="">
-      <img style="height: 20%; width: 20%;" id="img3" [src]="">
-      <img style="height: 20%; width: 20%;" id="img4" [src]="">
+      <div style="padding-left: 200px;">
+        <img class="zoom" id="img1" [src]="">
+        <img class="zoom" id="img2" [src]=""><br>
+        <img class="zoom" id="img3" [src]="">
+        <img class="zoom" id="img4" [src]="">
+      </div>
       <br><br><br><hr>
       <strong><h3>Comentarios</h3></strong><br><br>
     <ul id="comentarios">
@@ -92,7 +102,15 @@
 
     <button class="btn btn-primary my-3" id="comentar">Comentar</button>
     </ul>
+
+    <div id="relacionados">
+      
+    </div>
+    
   </div>
+
+  
+
   </main>
   <footer class="text-muted">
     <div class="container">
