@@ -29,6 +29,16 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="nombre"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" id="mi_carrito" href="#">Mi Carrito</a></li>
+              <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+              <li><a class="dropdown-item" id="cerrar" href="#">Me voy</a></li>
+            </ul>
+          </div>
           <li class="nav-item">
           </li>
         </ul>
@@ -36,12 +46,195 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    
+    <form class="row mt-3 g-3 needs-validation" novalidate>
+      <br><br><br>
+    
+    
+      <p style="text-align: center; font-size: 40px;">Carrito de compras</p><br>
+      <p style="font-size: 30px; padding-left: 400px;">Artículos a comprar</p>
+      <div class="container">
+        <table>
+          <th style="padding-left: 250px;">
+            Nombre
+          </th>
+          <th style="padding-left: 100px;">
+            Costo
+          </th>
+          <th style="padding-left: 100px;">
+            Cantidad
+          </th>
+          <th style="padding-left: 100px;">
+            Subtotal
+          </th>
+          
+        </table>
+        <hr style="width: 800px; border-top: 2px solid black; margin-left: 100px;">
+      </div>
+      
+      <div  id="productos_carrito" class="container">
+        
+      </div>
+    
+    
+      <div style="margin-left: 220px;">
+        <p style="font-size: 30px;">Tipo de envío</p><br>
+        
+        <input id="env_premium" name="env" type="radio" value="premium" onclick="envio_premium()" required>Premium : 2 a 5 días (15%)</input><br>
+        
+        <input id="env_express" name="env" type="radio" value="express" onclick="envio_express()" required>Express: 5 a 8 días (7%)</input><br>
+        
+        <input id="env_standard" name="env" type="radio" value="standard" onclick="envio_standard()" required>Standard: 12 a 15 días (5%)</input>
+        <div class="invalid-feedback">
+          Debe seleccionar un tipo de envío.
+        </div>
+        
+        <br><br>
+        
+        
+        
+        <p style="font-size: 30px;">Dirección de envío</p><br>
+        
+        
+        <label for="calle" class="form-label" style="font-size: 20px;">Calle</label><br>
+        <input type="text" class="form-control" style="width: 200px" id="calle" required>
+        <div class="invalid-feedback">
+          Debe completar el campo.
+        </div><br><br>
+        
+        <label for="numero" class="form-label" style="font-size: 20px;">Número</label><br>
+        <input type="text" class="form-control" style="width: 200px" id="numero" required>
+        <div class="invalid-feedback">
+          Debe completar el campo.
+        </div>
+        <br><br>
+
+        <label for="esquina" class="form-label" style="font-size: 20px;">Esquina</label><br>
+        <input type="text" class="form-control" style="width: 200px" id="esquina" required>
+        <div class="invalid-feedback">
+          Debe completar el campo.
+        </div><br><br><br>
+      
+        <hr style="width: 1400px;">
+      
+        <p style="font-size: 30px;">Costos</p>
+        <table style="border: 1px solid grey; width: 1000px;">
+          <tbody>
+            
+            <tr style="border: 1px solid grey;">
+              <td>
+                <p style="font-size: 30px; padding-left: 10px;">Subtotal</p>
+                <p style="padding-left: 10px;">Costo unitario del producto por cantidad</p>
+              </td>
+              <td>
+                <p id="subtotal_cont"></p>
+              </td>
+            </tr>
+
+            <tr style="border: 1px solid grey;">
+
+              <td>
+                <p style="font-size: 30px; padding-left: 10px;">Costo de envío</p>
+                <p style="padding-left: 10px;">Según el tipo de envío</p>
+              </td>
+              <td>
+                <p id="envio_cont"></p>
+              </td>
+            </tr>
+
+            <tr style="border: 1px solid grey;">
+
+              <td>
+                <p style="font-size: 30px; padding-left: 10px;">Total</p>
+              </td>
+              <td>
+                <p id="total_cont"></p>
+              </td>
+            </tr>
+
+          </tbody>
+        </table><br>
+
+        <hr style="width: 1400px;">
+        <br><br>
+        <p style="font-size: 30px;">Forma de pago</p>
+        
+        <div class="col-sm-12">
+          
+          <div style="font-size: 20px;" class="container" id="resultado_modal">No ha seleccionado una forma de pago.</div>
+
+          <button id="boton_seleccion_pago" type="button" class="btn btn-link ps-0" data-bs-toggle="modal"
+            data-bs-target="#modalPago" style="font-size: 20px; padding-left: 100px;">Seleccionar</button>
+            <div class="invalid-feedback" id="bad_feedback_boton_pago">
+              Debe seleccionar un modo de pago.
+            </div>
+            <div class="valid-feedback" id="good_feedback_boton_pago">
+              ¡Excelente!
+            </div>
+        </div><br><br><br>
+
+        <button type="submit" id="final_madafaka_button" class="btn btn-primary" onclick="validacionTerminos(), alertaFinal()">Finalizar Compra</button>
+
+      </div>
+    </form>
+  
+
+ 
+  </main>
+  
+  
+    <div class="modal fade" id="modalPago" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5">Forma de pago</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="was-validated" onsubmit="alertaFinal()" novalidate>
+              
+              <input id="credito" name="tipo_pago" type="radio" value="Tarjeta de crédito" style="height:50px; width: 20px; float:left;" onclick="anularPago()"><p style="font-size: 30px; text-align: center;">Tarjeta de crédito</p></input>
+              <hr><br>
+              
+              <label for="num_tarjeta" class="form-label" style="font-size: 20px;">Número de Tarjeta</label><br>
+              <input type="password" class="form-control" style="width: 170px" id="num_tarjeta" required>
+              <div class="invalid-feedback">
+                Debe completar el campo.
+              </div>
+
+              <label for="cod_seguridad" class="form-label" style="font-size: 20px;">Código de seguridad</label><br>
+              <input type="password" class="form-control" style="width: 170px" id="cod_seguridad" required>
+              <div class="invalid-feedback">
+                Debe completar el campo.
+              </div>
+
+              <label for="venc_tarjeta" class="form-label" style="font-size: 20px;">Fecha de vencimiento (MM/AA)</label><br>
+              <input type="month" class="form-control" style="width: 170px" id="venc_tarjeta" required>
+              <div class="invalid-feedback">
+                Debe completar el campo.
+              </div><br>
+              
+              
+              <input id="transf_banco" name="tipo_pago" type="radio" value="Transferencia bancaria" style="height:50px; width: 20px; float:left;"  onclick="anularPago()"><p style="font-size: 30px; text-align: center;">Transferencia bancaria</p></input>
+              <hr><br>
+              
+              <label for="nro_cuenta" class="form-label" style="font-size: 20px;">Número de cuenta</label><br>
+              <input type="password" class="form-control" style="width: 170px" id="nro_cuenta" required>
+              <div class="invalid-feedback">
+                Debe completar el campo.
+              </div><br>
+
+              <button type="button" class="btn btn-primary" aria-checked="true" onclick="botonModal(); validacionTerminos()">Aceptar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </form>
+
+          </div>
+          
+        </div>
       </div>
     </div>
-  </main>
+
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -60,6 +253,13 @@
       <div></div>
     </div>
   </div>
+
+  <div class="alert alert-success alert-dismissible fade" role="alert" id="alert-success">
+    <p>Datos guardados correctamente</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>

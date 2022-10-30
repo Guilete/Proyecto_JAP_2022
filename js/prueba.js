@@ -37,3 +37,10 @@ function comentar(array){
 
 
 
+
+
+
+      document.getElementById("subtotal_final").addEventListener("change", function(){
+        console.log(lelalsdlasd)
+        subtotal_Cart();
+    })

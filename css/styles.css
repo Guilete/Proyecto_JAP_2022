@@ -12,7 +12,13 @@ img.zoom{
   border: lightgray 1px solid;
 }
 
+.error-color{
+  color: red;
+}
 
+.ok-color{
+  color: rgb(0, 179, 0);
+}
 
 .jumbotron,
 .card-body,

@@ -80,5 +80,9 @@ document.addEventListener("DOMContentLoaded", ()=> {
     location.href = "login.html";
   })
 
+  document.getElementById("mi_carrito").addEventListener("click", () => {
+    location.href = "cart.html";
+  })
+
 })
 
