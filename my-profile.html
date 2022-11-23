@@ -7,6 +7,7 @@
   <title>eMercado - Todo lo que busques está aquí</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <style>
     .bd-placeholder-img {
@@ -44,6 +45,16 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="nombre"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" id="mi_carrito" href="#">Mi Carrito</a></li>
+              <li><a class="dropdown-item" id="mi_perfil" href="#">Mi Perfil</a></li>
+              <li><a class="dropdown-item" id="cerrar" href="#">Me voy</a></li>
+            </ul>
+          </div>
           <li class="nav-item">
           </li>
         </ul>
@@ -51,11 +62,78 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+    <div style="padding-left: 300px;">
+      <p style="font-size: 40px; padding-top: 60px;">Perfil</p><br><br>
+      <hr>
+
+      <form class="needs-validation" novalidate>
+        <div class="container">
+          <table>
+            <tr>
+              <td style="padding-right: 100px; padding-bottom: 20px;">
+                <label for="Primer_nombre" class="form-label" style="font-size: 20px;">Primer nombre *</label><br>
+                <input type="text" class="form-control" style="width: 400px" id="Primer_nombre" required>
+                <div class="invalid-feedback">
+                  Su primer nombre es obligatorio.
+                </div>
+                <div class="valid-feedback">
+                  Bien.
+                </div>
+              </td>
+
+              <td style="padding-bottom: 20px;">
+                <label for="Segundo_nombre" class="form-label" style="font-size: 20px;">Segundo nombre</label><br>
+                <input type="text" class="form-control" style="width: 400px" id="Segundo_nombre">
+              </td>
+            </tr>
+          
+            <tr>
+              <td style="padding-right: 100px; padding-bottom: 20px;">
+                <label for="Primer_apellido" class="form-label" style="font-size: 20px;">Primer apellido *</label><br>
+                <input type="text" class="form-control" style="width: 400px" id="Primer_apellido" required>
+                <div class="invalid-feedback">
+                  Su primer apellido es obligatorio.
+                </div>
+                <div class="valid-feedback">
+                  Bien.
+                </div>
+              </td>
+              <td style="padding-bottom: 20px;">
+                <label for="Segundo_apellido" class="form-label" style="font-size: 20px;">Segundo apellido</label><br>
+                <input type="text" class="form-control" style="width: 400px" id="Segundo_apellido">
+              </td> 
+            </tr>
+
+            <tr>
+              <td style="padding-bottom: 20px;">
+                <label for="E-mail" class="form-label" style="font-size: 20px;">E-mail</label><br>
+                <input type="email" class="form-control" value="" style="width: 400px" id="E-mail">
+                <div class="invalid-feedback">
+                  No se olvide del "@".
+                </div>
+              </td>
+              
+              <td style="padding-right: 100px; padding-bottom: 20px;">
+                <label for="Telefono" class="form-label" style="font-size: 20px;">Teléfono de contacto *</label><br>
+                <input type="number" class="form-control" style="width: 400px" id="Telefono" required>
+                <div class="invalid-feedback">
+                  Su número telefónico es obligatorio.
+                </div>
+                <div class="valid-feedback">
+                  Bien.
+                </div>
+              </td>
+            </tr>
+          </table>
+          <hr>
+          
+          <button id="boton_guardar_info" type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+      </form>
+
     </div>
+
+
   </main>
   <footer class="text-muted">
     <div class="container">

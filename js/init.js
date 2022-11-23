@@ -84,5 +84,9 @@ document.addEventListener("DOMContentLoaded", ()=> {
     location.href = "cart.html";
   })
 
+  document.getElementById("mi_perfil").addEventListener("click", () => {
+    location.href = "my-profile.html";
+  })
+
 })
 
